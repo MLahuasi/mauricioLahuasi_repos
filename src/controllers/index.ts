@@ -1,1 +1,1 @@
-export { MockCategoriaController } from "./mock-categoria";
+export { MockCategoriaController } from "./mock.controller";

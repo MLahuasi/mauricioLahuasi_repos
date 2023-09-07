@@ -124,3 +124,17 @@ export const throwError = (error: any, res = response, origin: string) => {
       },
     });
 };
+
+// VALIDATIONS
+export const FIND_DATA = Object.freeze({
+  ALREADY_EXISTS: (entity: string, field: string, value: string) =>
+    `${entity} with ${field}: ${value} already exists. `,
+  DONT_EXISTS: (entity: string, field: string, value: string) =>
+    `${entity} with ${field}: ${value} dont exists. `,
+});
+
+export const INVALID_TERM = (entity: string, param: string, value: string) =>
+  `${entity} Field ${param}:"${value}" not found in ${entity}`;
+
+export const INVALID_ID = (entity: string, param: string, value: number) =>
+  `${entity} Field ${param}:"${value}" not found in ${entity}`;

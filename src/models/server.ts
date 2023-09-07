@@ -3,7 +3,7 @@ import cors from "cors";
 import { parameters } from "../settings";
 import { AppDataSource } from "./db/datasource";
 
-import mockRoutes from "../routes/mock-categoria";
+import mockRoutes from "../routes/mock.route";
 
 class Server {
   private app: Application;
@@ -11,7 +11,7 @@ class Server {
   private hostname?: string;
 
   private apiPaths = {
-    ejerUno: "/api/uno",
+    mock: "/api/mock",
   };
 
   constructor() {
@@ -55,7 +55,7 @@ class Server {
 
   //RUTAS
   routes() {
-    this.app.use(this.apiPaths.ejerUno, mockRoutes);
+    this.app.use(this.apiPaths.mock, mockRoutes);
   }
 
   listen() {

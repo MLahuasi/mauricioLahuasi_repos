@@ -22,3 +22,4 @@ export {
   IMetricUpdateDTO,
   IMetricResultDTO,
 } from "./db/metric";
+export * as dto from "./dto";
