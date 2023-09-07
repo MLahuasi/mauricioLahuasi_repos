@@ -13,21 +13,24 @@ import { Repository } from "./repository";
 export class Tribe implements ITribe {
   @PrimaryGeneratedColumn("identity")
   _id: number;
+
   @Column("varchar", { nullable: false })
   name: string;
+
   @Column("integer", { nullable: false })
   status: number;
 
   //Many-To-One (Tribes have Organization)
   @ManyToOne(() => Organization, (organization) => organization.tribes, {
-    onDelete: "NO ACTION",
+    onDelete: "CASCADE",
     nullable: false,
   })
   organization: Organization;
+
   //One-To-Many (Tribe has Repositories)
   @OneToMany(() => Repository, (repository) => repository.tribe, {
     nullable: false,
-    onDelete: "NO ACTION",
+    onDelete: "CASCADE",
   })
   repositories?: Repository[];
 }

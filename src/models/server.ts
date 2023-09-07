@@ -4,6 +4,7 @@ import { parameters } from "../settings";
 import { AppDataSource } from "./db/datasource";
 
 import mockRoutes from "../routes/mock.route";
+import organizationRoutes from "../routes/organization.route";
 
 class Server {
   private app: Application;
@@ -12,6 +13,7 @@ class Server {
 
   private apiPaths = {
     mock: "/api/mock",
+    organization: "/api/organization",
   };
 
   constructor() {
@@ -22,10 +24,10 @@ class Server {
     //Conectar a Base de Datos
     this.connectDatabase();
 
-    // //Middlewares
+    //Middlewares
     this.middlewares();
 
-    // //Rutas aplicacion
+    //Rutas aplicacion
     this.routes();
   }
 
@@ -56,6 +58,7 @@ class Server {
   //RUTAS
   routes() {
     this.app.use(this.apiPaths.mock, mockRoutes);
+    this.app.use(this.apiPaths.organization, organizationRoutes);
   }
 
   listen() {

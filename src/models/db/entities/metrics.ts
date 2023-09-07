@@ -12,19 +12,25 @@ import { Repository } from "./repository";
 export class Metric implements IMetric {
   @PrimaryGeneratedColumn("identity")
   _id: number;
+
   @Column("numeric", { nullable: false })
   coverage: number;
-  @Column("numeric", { nullable: false })
+
+  @Column("integer", { nullable: false })
   bugs: number;
-  @Column("numeric", { nullable: false })
+
+  @Column("integer", { nullable: false })
   vulnerabilities: number;
-  @Column("numeric", { nullable: false })
+
+  @Column("integer", { nullable: false })
   hostpot: number;
-  @Column("numeric", { nullable: false })
+
+  @Column("integer", { nullable: false })
   code_smells: number;
 
   @OneToOne(() => Repository, {
     nullable: false,
+    onDelete: "CASCADE",
   })
   @JoinColumn()
   repository: number | IRepository;

@@ -6,18 +6,22 @@ import { Tribe } from "./tribe";
 export class Repository implements IRepository {
   @PrimaryGeneratedColumn("identity")
   _id: number;
+
   @Column("varchar", { nullable: false })
   name: string;
+
   @Column("char", { nullable: false })
   state: string;
+
   @Column("char", { nullable: false })
   status: string;
+
   @Column("timestamp", { nullable: false })
   created_at: Date;
 
   //Many-To-One (Repositories has Tribe)
   @ManyToOne(() => Tribe, (tribe) => tribe.repositories, {
-    onDelete: "NO ACTION",
+    onDelete: "CASCADE",
     nullable: false,
   })
   tribe: Tribe;
