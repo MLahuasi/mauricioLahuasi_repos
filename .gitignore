@@ -1,0 +1,6 @@
+/dist
+/node_modules
+/coverage
+/postgres
+docker-compose.yaml
+.env
