@@ -1,3 +1,4 @@
+import { IMetric } from "./metric";
 import { ITribe } from "./tribe";
 
 export interface IRepositoryInsertDTO {
@@ -14,4 +15,6 @@ export interface IRepositoryUpdateDTO extends IRepositoryInsertDTO {
 
 export interface IRepositoryResultDTO extends IRepositoryUpdateDTO {}
 
-export interface IRepository extends IRepositoryInsertDTO {}
+export interface IRepository extends IRepositoryUpdateDTO {
+  metric?: IMetric;
+}

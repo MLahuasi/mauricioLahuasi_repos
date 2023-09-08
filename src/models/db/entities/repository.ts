@@ -1,6 +1,13 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { IRepository } from "../../../interfaces";
 import { Tribe } from "./tribe";
+import { Metric } from "./metrics";
 
 @Entity({ name: "repositories" })
 export class Repository implements IRepository {
@@ -25,4 +32,8 @@ export class Repository implements IRepository {
     nullable: false,
   })
   tribe: Tribe;
+
+  //One-To-One (Repositories has Metric)
+  @OneToOne(() => Metric, (metric) => metric.repository)
+  metric: Metric;
 }
