@@ -1,5 +1,4 @@
-import { IMetric } from "./metric";
-import { ITribe } from "./tribe";
+import { IMetric, ITribe } from "..";
 
 export interface IRepositoryInsertDTO {
   name: string;

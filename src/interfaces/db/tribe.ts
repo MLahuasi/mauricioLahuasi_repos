@@ -1,4 +1,4 @@
-import { IOrganization } from "./organization";
+import { IRepository, IOrganization } from "..";
 
 export interface ITribeInsertDTO {
   name: string;
@@ -12,4 +12,6 @@ export interface ITribeUpdateDTO extends ITribeInsertDTO {
 
 export interface ITribeResultDTO extends ITribeUpdateDTO {}
 
-export interface ITribe extends ITribeInsertDTO {}
+export interface ITribe extends ITribeUpdateDTO {
+  repositories?: IRepository[];
+}

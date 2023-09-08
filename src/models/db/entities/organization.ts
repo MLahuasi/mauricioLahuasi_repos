@@ -1,9 +1,8 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { IOrganization } from "../../../interfaces";
 import { Tribe } from "./tribe";
 
 @Entity({ name: "organizations" })
-export class Organization implements IOrganization {
+export class Organization {
   @PrimaryGeneratedColumn("increment")
   _id: number;
 

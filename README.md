@@ -210,6 +210,8 @@
     }
 ```
 
+> > > - **UNIT TEST**: Se deben ejecutar con el servicio arriba porque necesita el mock creado en la TAREA #1 para encontrar el nombre y realizar la validacion
+
 > **Ejercicio 4: Generar reporte CSV métricas repositorio**
 
 > > - Se creó un servicio rest [GET](http://localhost:8080/api/custom/csv/1) que retorna un archivo `CSV` con la información del id de la Tribu que se envía en la URL.

@@ -5,12 +5,11 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { ITribe } from "../../../interfaces";
 import { Organization } from "./organization";
 import { Repository } from "./repository";
 
 @Entity({ name: "tribes" })
-export class Tribe implements ITribe {
+export class Tribe {
   @PrimaryGeneratedColumn("increment")
   _id: number;
 

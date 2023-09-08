@@ -5,12 +5,11 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { IRepository } from "../../../interfaces";
 import { Tribe } from "./tribe";
 import { Metric } from "./metrics";
 
 @Entity({ name: "repositories" })
-export class Repository implements IRepository {
+export class Repository {
   @PrimaryGeneratedColumn("increment")
   _id: number;
 

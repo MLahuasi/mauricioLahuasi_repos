@@ -37,6 +37,37 @@ export class TribeService {
     }
   }
 
+  async findRepositoriesByTribeTest(tribe: Tribe) {
+    try {
+      let id = tribe._id;
+
+      const tribes = await this.getTribes(id);
+
+      if (tribes.length == 0)
+        return {
+          error: "La Tribu no se encuentra registrada",
+        };
+
+      const result = await this.buildResponse(tribes);
+
+      if (result.length == 0)
+        return {
+          error:
+            "La Tribu no tiene repositorios que cumplan con la cobertura necesaria",
+        };
+
+      return result;
+    } catch (error) {
+      const { type, message } = errors.getMessage(
+        error,
+        "TribeService.findRepositoriesByTribe"
+      );
+      if (message) throw error;
+
+      throw new Error(`${type}|message`);
+    }
+  }
+
   async findRepositoriesByTribe(param: string) {
     try {
       let id = Number(param);
@@ -75,7 +106,6 @@ export class TribeService {
       if (tribe.repositories)
         for (let j = 0; j < tribe.repositories.length; j++) {
           const repository = tribe.repositories[j];
-
           const verificationStateData = await this.getVerificationStateData();
           const verificationStateDataResult = verificationStateData.filter(
             (verificationState) => verificationState.id == repository._id

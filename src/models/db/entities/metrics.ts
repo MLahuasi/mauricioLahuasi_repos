@@ -5,11 +5,10 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { IMetric, IRepository } from "../../../interfaces";
 import { Repository } from "./repository";
 
 @Entity({ name: "metrics" })
-export class Metric implements IMetric {
+export class Metric {
   @PrimaryGeneratedColumn("increment")
   _id: number;
 
@@ -33,5 +32,5 @@ export class Metric implements IMetric {
     onDelete: "CASCADE",
   })
   @JoinColumn()
-  repository: number | IRepository;
+  repository: number | Repository;
 }
