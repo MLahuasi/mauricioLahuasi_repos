@@ -4,7 +4,7 @@ import { Tribe } from "./tribe";
 
 @Entity({ name: "repositories" })
 export class Repository implements IRepository {
-  @PrimaryGeneratedColumn("identity")
+  @PrimaryGeneratedColumn("increment")
   _id: number;
 
   @Column("varchar", { nullable: false })

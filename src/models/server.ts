@@ -5,6 +5,8 @@ import { AppDataSource } from "./db/datasource";
 
 import mockRoutes from "../routes/mock.route";
 import organizationRoutes from "../routes/organization.route";
+import seedRoutes from "../routes/seed.route";
+import customQueryRoutes from "../routes/custom-query.route";
 
 class Server {
   private app: Application;
@@ -14,6 +16,8 @@ class Server {
   private apiPaths = {
     mock: "/api/mock",
     organization: "/api/organization",
+    seed: "/api/seed",
+    query: "/api/custom",
   };
 
   constructor() {
@@ -59,6 +63,8 @@ class Server {
   routes() {
     this.app.use(this.apiPaths.mock, mockRoutes);
     this.app.use(this.apiPaths.organization, organizationRoutes);
+    this.app.use(this.apiPaths.seed, seedRoutes);
+    this.app.use(this.apiPaths.query, customQueryRoutes);
   }
 
   listen() {

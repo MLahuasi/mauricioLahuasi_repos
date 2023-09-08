@@ -99,7 +99,7 @@
             }
 ```
 
-> > > - **Update**: Petición de tipo [PUT](http://localhost:8080/api/organization/ID).
+> > > - **Update**: Petición de tipo [PUT](http://localhost:8080/api/organization/1).
 
 > > > > > Se recibe en la url el ID del registro que se quiere actualizar
 
@@ -135,13 +135,13 @@
 
 > > > > > **NOTA**: Se valida que `status` sea `0 o 1`. Se realizó esto para Manejar un `status` `activo e inactivo`
 
-> > > - **Delete**: Petición de tipo [DELETE](http://localhost:8080/api/organization/ID). Se recibe en la url el ID del registro que se quiere actualizar
+> > > - **Delete**: Petición de tipo [DELETE](http://localhost:8080/api/organization/1). Se recibe en la url el ID del registro que se quiere eliminar
 
 ```
             http://localhost:8080/api/organization/1
 
             Donde
-                1 : es el ID que se quiere actualizar
+                1 : es el ID que se quiere eliminar
 ```
 
 > > > > > Se recibe una respuesta con la siguiente estructura
@@ -152,3 +152,5 @@
                 "MESSAGE": "Successful process"
             }
 ```
+
+> **Ejercicio 3: Servicio para obtener las métricas de un repositorio**

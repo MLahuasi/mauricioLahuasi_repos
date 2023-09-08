@@ -10,7 +10,7 @@ import { Repository } from "./repository";
 
 @Entity({ name: "metrics" })
 export class Metric implements IMetric {
-  @PrimaryGeneratedColumn("identity")
+  @PrimaryGeneratedColumn("increment")
   _id: number;
 
   @Column("numeric", { nullable: false })

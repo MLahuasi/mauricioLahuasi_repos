@@ -4,7 +4,7 @@ import { Tribe } from "./tribe";
 
 @Entity({ name: "organizations" })
 export class Organization implements IOrganization {
-  @PrimaryGeneratedColumn("identity")
+  @PrimaryGeneratedColumn("increment")
   _id: number;
 
   @Column("varchar", { nullable: false })
