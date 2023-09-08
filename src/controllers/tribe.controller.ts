@@ -20,4 +20,24 @@ export class TribeController {
       );
     }
   }
+
+  async getSvcRepositoriesByTribe(req = request, res = response) {
+    try {
+      const serv: TribeService = new TribeService();
+      const { param } = req.params;
+
+      const csv = await serv.getSvcRepositoriesByTribe(param);
+      return res
+        .status(200)
+        .setHeader("Content-Type", "text/csv")
+        .setHeader("Content-Disposition", "attachment; filename=repository.csv")
+        .send(csv);
+    } catch (error) {
+      return errors.throwError(
+        error,
+        res,
+        "TribeController.getSvcRepositoriesByTribe"
+      );
+    }
+  }
 }

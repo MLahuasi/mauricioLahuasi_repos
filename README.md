@@ -12,7 +12,11 @@
     npm install
 ```
 
-> - Crear un repositorio y Base de Datos en [cockroachDb](https://www.cockroachlabs.com/). Copiar la `DATABASE_URL`
+> - Crear un repositorio y Base de Datos en [cockroachDb](https://www.cockroachlabs.com/). Se debe configurar para que funcione con TypeORM.
+
+> > > ![](./assets/01-ConfiguracionBDD.png)
+
+> - Copiar la `DATABASE_URL`.
 
 > - Crear el archivo `.env` basado en la estructura de `.env.template`. Pegar en `DATABASE_URL` la URL que se obtuvo anteriormente.
 
@@ -154,3 +158,58 @@
 ```
 
 > **Ejercicio 3: Servicio para obtener las métricas de un repositorio**
+
+> > - Se creó un EndPoint [GET](http://localhost:8080/api/custom/1), (en la url `1` es el `id` de la tribu)
+
+> > > - **Respuesta Escenario #1**: Resultado si se cumplen las siguientes condiciones: repositorio.state igual "E", metrica.coverage mayor 75%, repository.created_at (Año) igual al año actual.
+
+```
+    {
+        "repositories": [
+            {
+                "id": "2",
+                "name": "cd-common-text",
+                "tribe": "Centro Digital",
+                "organization": "Banco Pichincha",
+                "state": "Habilitado",
+                "coverage": "76%",
+                "codeSmells": "1",
+                "bugs": "0",
+                "vulnerabilities": "2",
+                "hotspots": "0",
+                "verificationState": "En Espera"
+            }
+        ]
+    }
+
+```
+
+> > > - **Respuesta Escenario #2**: Resultado si la tribu no existe
+
+```
+    {
+        "repositories": {
+            "error": "La Tribu no se encuentra registrada"
+        }
+    }
+```
+
+> > > - **Respuesta Escenario #3**: Se consume el servicio mock [GET](http://localhost:8080/api/mock/getall) mediante `Axios` para obtener los nombres del campo verificationState. **NOTA**: Como es un servicio rest en este mismo proyecto funciona cuando se encuntra ejecutando en Desarrollo o Producción.
+
+```
+    "verificationState": "En Espera"
+```
+
+> > > - **Respuesta Escenario #4**: Respuesta cuando con cumple la covertura del 75%
+
+```
+    {
+        "repositories": {
+            "error": "La Tribu no tiene repositorios que cumplan con la cobertura necesaria"
+        }
+    }
+```
+
+> **Ejercicio 4: Generar reporte CSV métricas repositorio**
+
+> > - Se creó un servicio rest [GET](http://localhost:8080/api/custom/csv/1) que retorna un archivo `CSV` con la información del id de la Tribu que se envía en la URL.

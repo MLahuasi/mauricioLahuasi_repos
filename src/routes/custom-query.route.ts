@@ -17,4 +17,13 @@ router.get(
   ctrTribe.findRepositoriesByTribe
 );
 
+router.get(
+  "/csv/:param",
+  [
+    check("param", validation.FIELS.MANDATORY("param")).not().isEmpty(),
+    validateFields,
+  ],
+  ctrTribe.getSvcRepositoriesByTribe
+);
+
 export default router;
